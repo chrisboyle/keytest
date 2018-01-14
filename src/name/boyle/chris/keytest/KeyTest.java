@@ -17,9 +17,12 @@ public class KeyTest extends Activity {
 	TextView text;
 
 	@Override
-	public boolean onKeyDown(int keycode, KeyEvent event)
-	{
-		text.setText("Keycode: "+keycode+"\nKeyEvent: "+event.toString());
-		return true;
+	public boolean dispatchKeyEvent(final KeyEvent event) {
+		if (KeyEvent.ACTION_DOWN == event.getAction()) {
+			text.setText(
+				"Keycode: " + event.getKeyCode() + "\nKeyEvent: " + event.toString()
+			);
+		}
+		return super.dispatchKeyEvent(event);
 	}
 }
