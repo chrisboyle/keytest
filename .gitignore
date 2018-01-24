@@ -2,3 +2,6 @@ bin
 gen
 *.iml
 .idea
+local.properties
+build
+.gradle
