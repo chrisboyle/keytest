@@ -3,6 +3,7 @@ package name.boyle.chris.keytest;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.widget.TextView;
 
 public class KeyTest extends Activity {
@@ -18,11 +19,13 @@ public class KeyTest extends Activity {
 
 	@Override
 	public boolean dispatchKeyEvent(final KeyEvent event) {
-		if (KeyEvent.ACTION_DOWN == event.getAction()) {
-			text.setText(
-				"Keycode: " + event.getKeyCode() + "\nKeyEvent: " + event.toString()
-			);
-		}
-		return super.dispatchKeyEvent(event);
+		text.setText("KeyEvent: " + event.toString() + "\n" + text.getText());
+		return false;
+	}
+
+	@Override
+	public boolean dispatchGenericMotionEvent(MotionEvent ev) {
+		text.setText("MotionEvent: " + ev.toString() + "\n" + text.getText());
+		return false;
 	}
 }
